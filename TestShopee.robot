@@ -6,17 +6,19 @@ ${BROWSER}    Chrome
 ${URL}    https://shopee.co.th/?gad_source=1&gclid=Cj0KCQiAwOe8BhCCARIsAGKeD57fckFGAe4jnwnokSWr8nI31Xyh5lm7yh9S1EziDpfq_K0ixEF6HPEaAmTHEALw_wcB
 ${SEARCH_TEXT}    baby toys
 ${SEARCH_BOX}    class="shopee-searchbar shopee-searchbar--focus"
+${ENGLISH_OPTION}  //div[contains(text(), 'English')] 
 
 *** Test Cases ***
 Enter Shopee website, landing on home page with EN lang
     Open Browser    ${URL}    ${BROWSER}
     Maximize Browser Window
     Sleep    10
-    ##Click Button    class="fNzlSz"
+    #Click Button    class="fNzlSz"
     Mouse Over    class="stardust-popover"
-    #Click Element    class="stardust-popover"
+    Click Element    ${ENGLISH_OPTION}
     #Capture Page Screenshot
     [Teardown]    Close Browser
+
 
 Search for keywords “ baby toys “
     Open Browser    ${URL}    ${BROWSER}
@@ -25,6 +27,7 @@ Search for keywords “ baby toys “
     Press Key    ${SEARCH_BOX}    ENTER
     Sleep    10
     [Teardown]    Close Browser
+
 
 Website display search result as a list
     Open Browser    ${URL}    ${BROWSER}
